@@ -53,28 +53,43 @@ else:
 text_num = input("Enter a number btw. 1 and 3 to select: ")
 print(separator)
 
+words_first_up = list()
+words_upper = list()
+words_lower = list()
+numbers = list()
+
 if text_num.isnumeric and int(text_num) >= 1 and int(text_num) <=3: 
-    for i in TEXTS[text_num - 1]:                 # udělej to přes for for word in TEXTS[text_num - 1].split(" "): tohle == slepá ulička zatím 
-        
-
-            #počet slov
-
-            #počet slov začínajících velkým písmenem,  if istitle() tak přiřaď do skupiny kde mají první velké
-
-            #počet slov psaných velkými písmeny,     - if isupper() pak přiřaď do listu velká písmena?
-
-            #počet slov psaných malými písmeny,     - if islower() pak přiřaď do listu malá pismena?
-
-            #počet čísel (ne cifer),                if str. isnumeric pak jej přiřaď do číselné promněnné
-
-            #sumu všech čísel (ne cifer) v textu.       count celou číselnou promněnou
-
-
-elif not text_num.isnumeric:                                                          # pokud uživatel zadá jiný vstup než číslo, program jej rovněž upozorní a skončí.
+    for word in (TEXTS[int(text_num) - 1].split()):
+        if word.isalpha():
+            if word.istitle():
+                words_first_up.append(word)                         #počet slov začínajících velkým písmenem,  if istitle() tak přiřaď do skupiny kde mají první velké
+            elif word.islower():                                    #počet slov psaných malými písmeny,     - if islower() pak přiřaď do listu malá pismena?
+                words_lower.append(word)
+            elif word.isupper():                                    #počet slov psaných velkými písmeny,     - if isupper() pak přiřaď do listu velká písmena?
+                words_upper.append(word)
+        else:                                                       #počet čísel (ne cifer),                if str. isnumeric pak jej přiřaď do číselné promněnné
+            numbers.append(word)
+elif not text_num.isnumeric:
     print("Your entred value is not number! Terminating the program ....")
     quit()
 else:                                                                                    # Pokud uživatel vybere takové číslo textu, které není v zadání, program jej upozorní a skončí,
     print("Your entred number is out of 1 - 3. Terminating the program ...")
     quit()
 
+print(f"There are {len(TEXTS[int(text_num) - 1].split())} words in the selected text.")
+print(f"There are {len(words_first_up)} titlecase words.")
+print(f"There are {len(words_upper)} uppercase words.")
+print(f"There are {len(words_lower)} lowercase words.")
+print(f"There are {len(numbers)} numeric strings.")
+print(f"The sum of all the numbers {numbers.count(int())}")
 
+print(words_first_up)
+print(words_upper)
+print(words_lower)
+print(numbers)
+
+
+#sumu všech čísel (ne cifer) v textu.       count celou číselnou promněnou
+
+
+# pokud uživatel zadá jiný vstup než číslo, program jej rovněž upozorní a skončí.
