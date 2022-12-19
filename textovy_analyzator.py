@@ -79,16 +79,23 @@ else: # Pokud uživatel vybere takové číslo textu, které není v zadání, p
     quit()
 
 print(f"""There are {len(TEXTS[int(text_num) - 1].split())} words in the selected text.
-There are {len(words_first_up)} titlecase words.
+There are {len(words_first_up)} titlecase words. 
 There are {len(words_upper)} uppercase words.
 There are {len(words_lower)} lowercase words.
 There are {len(numbers)} numeric strings.
-The sum of all the numbers {sum(numbers)} .""")
+The sum of all the numbers {sum(numbers)} .
+{separator}""") #sumu všech čísel (ne cifer) v textu.       count celou číselnou promněnou
+
+words_lenght =  []
+for word in  (TEXTS[int(text_num) - 1].split()):
+    words_lenght.append(len(word))
+
+#print enumerate index + hodnota délky slov sep="\n"
+
 
 print(words_first_up)
 print(words_upper)
 print(words_lower)
 print(numbers)
+print(words_lenght)
 
-
-#sumu všech čísel (ne cifer) v textu.       count celou číselnou promněnou
