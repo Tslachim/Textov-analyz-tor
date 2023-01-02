@@ -61,15 +61,13 @@ numbers = list()
 if text_num.isnumeric and int(text_num) >= 1 and int(text_num) <=3: 
     for word in (TEXTS[int(text_num) - 1].split()):
         if word.istitle(): #počet slov začínajících velkým písmenem, if istitle() tak přiřaď do skupiny kde mají první velké
-            words_first_up.append(word)                         
+            words_first_up.append(word.strip(",.'"))                         
         elif word.islower(): #počet slov psaných malými písmeny, if islower() pak přiřaď do listu malá pismena?
-            words_lower.append(word)
+            words_lower.append(word.strip(",.'"))
         elif word.isupper(): #počet slov psaných velkými písmeny, if isupper() pak přiřaď do listu velká písmena?
-            words_upper.append(word)
+            words_upper.append(word.strip(",.'"))
         elif word.isnumeric(): #počet čísel (ne cifer), if str. isnumeric pak jej přiřaď do číselné promněnné
-            numbers.append(int(word))
-
-
+            numbers.append(int(word.strip(",.'")))
 
 elif not text_num.isnumeric: # pokud uživatel zadá jiný vstup než číslo, program jej rovněž upozorní a skončí.
     print("Your entred value is not number! Terminating the program ....")
@@ -88,14 +86,15 @@ The sum of all the numbers {sum(numbers)} .
 
 words_lenght =  []
 for word in  (TEXTS[int(text_num) - 1].split()):
-    words_lenght.append(len(word))
+    words_lenght.append(len(word.strip(",."))) #rozepíše do jedné promněné postupně hodnoty délky slova.
 
-#print enumerate index + hodnota délky slov sep="\n"
+words_lenght2 = dict()
+for word in words_lenght:
+    words_lenght2[word] = words_lenght.count(word)
 
+print(f""" LEN| OCCURENCES |NR.
+{separator}""")
 
-print(words_first_up)
-print(words_upper)
-print(words_lower)
-print(numbers)
-print(words_lenght)
-
+for i in range(1,12):
+    if i in words_lenght2:
+        print(f"{i}|".ljust(5), f"{int(words_lenght2[i]) * '*'}", f"|{words_lenght2[i]}".ljust(17))
