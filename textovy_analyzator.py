@@ -95,6 +95,6 @@ for word in words_lenght:
 print(f""" LEN| OCCURENCES |NR.
 {separator}""")
 
-for i in range(1,12):
+for i in range(1,20):
     if i in words_lenght2:
-        print(f"{i}|".ljust(5), f"{int(words_lenght2[i]) * '*'}", f"|{words_lenght2[i]}".ljust(17))
+        print(f"  {i}|  {int(words_lenght2[i]) * '*'}", f"|{words_lenght2[i]}")
